@@ -452,10 +452,47 @@ Sidebar
 /* Comments Section */
 #comments-section {
     margin-left: 8px;
-    border-top: 2px solid #18BC9C;
+    border-top: 1px solid #18BC9C;
     padding: 8px;
 }
 
+.post-question-section {
+    padding: 8px 16px;
+    border-top: 1px solid #18BC9C;
+}
+
+.post-question-section textarea {
+    height: 80px;
+    width: 85%;
+    padding: 18px;
+}
+
+.question-card {
+    padding: 20px 10px;
+    border-radius: 15px;
+    border: 2px solid #2C3E50;
+    margin-bottom: 8px;
+}
+
+.question-card-meta {
+    color: #3b5998;
+}
+
+.question-card-meta a{
+    color: #18BC9C;
+}
+
+.question-card-meta-below {
+    border-top: 1px solid #18BC9C;
+    color: #18BC9C;
+    padding-top: 10px;
+}
+
+.question-card-meta-below .dislike {
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #18BC9C;
+}
 
 
 /* Media Queries */
