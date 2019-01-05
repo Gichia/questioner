@@ -33,7 +33,7 @@
 
     <nav>
         <div id="logo-img">
-            <a href="#">
+            <a href="index.html">
                 <!-- <img src="img/logo.png" alt="Questioner Logo"> -->
                 <h2>Questioner</h2>
             </a>
@@ -70,82 +70,107 @@
 
     <!-- Main Area -->
     <main>
-        <h2 class="page-heading">The Annual DevFest Contest (2019)</h2>
+        <h4 class="page-heading">Questions in [The Annual DevFest Contest (2019)]</h4>
 
         <div id="post-container">
             <section id="blogpost">
-                <div class="card">
-                    <div class="card-meta-blogpost">
-                        Posted by Admin on 12/12/2018 in <a href="#">Web Dev</a>
-                    </div>
-                    <div class="card-image">
-                        <img src="img/meeting1.jpeg" alt="Card Image">
-                    </div><br>
-                    <div class="card-description">
-                        <div class="card-meta-below">
-                            Held on <i class="fas fa-calendar-alt"></i> 12/12/2019 at <i class="fas fa-map-marked"></i> Parklands, Nairobi
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis ut doloremque veniam maiores veritatis quis molestiae saepe aspernatur molestias vero at quas consequatur, odio voluptates perferendis fugiat, tempora velit maxime quos officia sit modi! Quia reprehenderit eligendi praesentium dolorum fugit.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis ut doloremque veniam maiores veritatis quis molestiae saepe aspernatur molestias vero at quas consequatur, odio voluptates perferendis fugiat, tempora velit maxime quos officia sit modi! Quia reprehenderit eligendi praesentium dolorum fugit.</p>
-                    </div>
-                </div>
-
-                <!-- Post your question -->
-                <div class="post-question-section">
-                    <h2>Suggest a question</h2>
-                    
-                    <div class="question-area">
-                        <form id="questionForm">
-                            <p>
-                                <textarea rows="5" placeholder="Post your question here.."></textarea>
-                            </p>
-                            <button class="btn-readmore" type="submit">Submit</button>
-                        </form>
-                    </div>
-                </div>
-
+                
                 <!-- Comments Section -->
-                <div id="comments-section">
-                    <h2>Popular Suggested Questions</h2>
-
-                    <div class="question-card">
-                        <div class="question-card-description">
-                            <div class="question-card-meta">
-                                Suggested by <a href="#">Peter</a> on 12/12/1028
+                <div class="comments-section">
+                    
+                    <div id="question-card">
+                        <div id="question-card-description">
+                            <div id="question-card-meta">
+                                Question by <a href="#">Peter</a> on 12/12/2018
                             </div>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti consequatur eum voluptas quas esse, obcaecati quo reiciendis!</p>
                         </div>
-                        <div class="question-card-meta-below">
+                        <div id="question-card-comment">
+                            <form>
+                                <p>
+                                    <textarea placeholder="Comment on this.."></textarea>
+                                </p>
+                                <button class="btn-readmore" type="submit">Comment</button>
+                            </form>
+                        </div>
+                        <div id="question-comment">
+                            <div class="comment">
+                                <span><a href="#">Jane</a></span> Says:
+                                <p>
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit laborum animi iste perspiciatis, necessitatibus incidunt nisi vero aut provident distinctio!
+                                </p>
+                            </div>
+                            <div class="comment">
+                                <span><a href="#">John</a></span> Says:
+                                <p>
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit laborum animi iste perspiciatis, necessitatibus incidunt nisi vero aut provident distinctio!
+                                </p>
+                            </div>
+                        </div>
+                        <div id="question-card-meta-below">
                             <i class="fas fa-thumbs-up"></i> 12 <i class="dislike fas fa-thumbs-down"></i> 
                         </div>
                     </div>
 
-                    <div class="question-card">
-                        <div class="question-card-description">
-                            <div class="question-card-meta">
-                                Suggested by <a href="#">Peter</a> on 12/12/1028
+                    <div id="question-card">
+                            <div id="question-card-description">
+                                <div id="question-card-meta">
+                                    Question by <a href="#">Peter</a> on 12/12/2018
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti consequatur eum voluptas quas esse, obcaecati quo reiciendis!</p>
                             </div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti consequatur eum voluptas quas esse, obcaecati quo reiciendis!</p>
+                            <div id="question-card-comment">
+                                <form>
+                                    <p>
+                                        <textarea placeholder="Comment on this.."></textarea>
+                                    </p>
+                                    <button class="btn-readmore" type="submit">Comment</button>
+                                </form>
+                            </div>
+                            <div id="question-comment">
+                                <div class="comment">
+                                    <span><a href="#">John</a></span> Says:
+                                    <p>
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit laborum animi iste perspiciatis, necessitatibus incidunt nisi vero aut provident distinctio!
+                                    </p>
+                                </div>
+                            </div>
+                            <div id="question-card-meta-below">
+                                <i class="fas fa-thumbs-up"></i> 12 <i class="dislike fas fa-thumbs-down"></i> 
+                            </div>
                         </div>
-                        <div class="question-card-meta-below">
-                            <i class="fas fa-thumbs-up"></i> 9 <i class="dislike fas fa-thumbs-down"></i> 
-                        </div>
-                    </div>
 
-                    <div class="question-card">
-                        <div class="question-card-description">
-                            <div class="question-card-meta">
-                                Suggested by <a href="#">Peter</a> on 12/12/1028
+                    <div id="question-card">
+                        <div id="question-card-description">
+                            <div id="question-card-meta">
+                                Question by <a href="#">Peter</a> on 12/12/2018
                             </div>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti consequatur eum voluptas quas esse, obcaecati quo reiciendis!</p>
                         </div>
-                        <div class="question-card-meta-below">
+                        <div id="question-card-comment">
+                            <form>
+                                <p>
+                                    <textarea placeholder="Comment on this.."></textarea>
+                                </p>
+                                <button class="btn-readmore" type="submit">Comment</button>
+                            </form>
+                        </div>
+                        <div id="question-card-meta-below">
                             <i class="fas fa-thumbs-up"></i> 6 <i class="dislike fas fa-thumbs-down"></i> 
                         </div>
                     </div>
 
-                    <a href="questions.html" class="btn-readmore">All Questions</a>
-
+                    <!-- Pagination -->
+                    <div class="pagination">
+                            <a href="#">Prev</a>
+                            <a href="#">4</a>
+                            <a href="#">6</a>
+                            <a href="#">9</a>
+                            <a href="#">Next</a>
+                    </div>
+                    
+                    <a href="meetup.html" class="btn-readmore">Back</a>
+                    
                 </div>
 
             </section>
