@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Questioner</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Nav -->
+    <div id="slideout-menu">
+        <ul>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a href="meetuplist.html">Meetup</a>
+            </li>
+            <li>
+                <a href="about.html">About</a>
+            </li>
+            <li>
+                <a href="login.html">Login</a>
+            </li>
+            <li>
+                <input type="text" placeholder="Search here..">
+            </li>
+        </ul>
+    </div>
+
+    <nav>
+        <div id="logo-img">
+            <a href="#">
+                <!-- <img src="img/logo.png" alt="Questioner Logo"> -->
+                <h2>Questioner</h2>
+            </a>
+        </div>
+        <div id="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a class="active" href="meetuplist.html">Meetup</a>
+            </li>
+            <li>
+                <a href="about.html">About</a>
+            </li>
+            <li>
+                <a href="login.html">Login</a>
+            </li>
+            <li>
+                <div id="search-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="searchbox">
+        <input type="text" placeholder="Search here..">
+    </div>
+    <!-- /. End of Nav -->
+
+
+    <!-- Main Area -->
+    <main>
+        <h2 class="page-heading">The Annual DevFest Contest (2019)</h2>
+
+        <div id="post-container">
+            <section id="blogpost">
+                <div class="card">
+                    <div class="card-meta-blogpost">
+                        Posted by Admin on 12/12/2018 in <a href="#">Web Dev</a>
+                    </div>
+                    <div class="card-image">
+                        <img src="img/meeting1.jpeg" alt="Card Image">
+                    </div><br>
+                    <div class="card-description">
+                        <div class="card-meta-below">
+                            Held on <i class="fas fa-calendar-alt"></i> 12/12/2019 at <i class="fas fa-map-marked"></i> Parklands, Nairobi
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis ut doloremque veniam maiores veritatis quis molestiae saepe aspernatur molestias vero at quas consequatur, odio voluptates perferendis fugiat, tempora velit maxime quos officia sit modi! Quia reprehenderit eligendi praesentium dolorum fugit.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis ut doloremque veniam maiores veritatis quis molestiae saepe aspernatur molestias vero at quas consequatur, odio voluptates perferendis fugiat, tempora velit maxime quos officia sit modi! Quia reprehenderit eligendi praesentium dolorum fugit.</p>
+                    </div>
+                </div>
+
+                <!-- Post your question -->
+                <div class="post-question-section">
+                    <h2>Suggest a question</h2>
+                    
+                    <div class="question-area">
+                        <form id="questionForm">
+                            <p>
+                                <textarea rows="5" placeholder="Post your question here.."></textarea>
+                            </p>
+                            <button class="btn-readmore" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Comments Section -->
+                <div id="comments-section">
+                    <h2>Popular Suggested Questions</h2>
+
+                    <div class="question-card">
+                        <div class="question-card-description">
+                            <div class="question-card-meta">
+                                Suggested by <a href="#">Peter</a> on 12/12/1028
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti consequatur eum voluptas quas esse, obcaecati quo reiciendis!</p>
+                        </div>
+                        <div class="question-card-meta-below">
+                            <i class="fas fa-thumbs-up"></i> 12 <i class="dislike fas fa-thumbs-down"></i> 2
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-card-description">
+                            <div class="question-card-meta">
+                                Suggested by <a href="#">Peter</a> on 12/12/1028
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti consequatur eum voluptas quas esse, obcaecati quo reiciendis!</p>
+                        </div>
+                        <div class="question-card-meta-below">
+                            <i class="fas fa-thumbs-up"></i> 9 <i class="dislike fas fa-thumbs-down"></i> 2
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-card-description">
+                            <div class="question-card-meta">
+                                Suggested by <a href="#">Peter</a> on 12/12/1028
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti consequatur eum voluptas quas esse, obcaecati quo reiciendis!</p>
+                        </div>
+                        <div class="question-card-meta-below">
+                            <i class="fas fa-thumbs-up"></i> 6 <i class="dislike fas fa-thumbs-down"></i> 2
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn-readmore">All Questions</a>
+
+                </div>
+
+            </section>
+
+            <!-- Sidebar -->
+            <aside id="sidebar">
+                <h2>Popular Meetups</h2>
+                <p>Something here</p>
+            </aside>
+
+        </div>
+
+
+    </main>
+
+    <footer>
+            <div id="left-footer">
+                <h3>Quick Links</h3>
+                <p>
+                    <ul>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                        <li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="#">Blogs</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
+                </p>
+            </div>
+
+            <div id="right-footer">
+                <h3>Follow us on</h3>
+                <div id="social-media-footer">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <p>This website is developed by Questioner</p>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+
+</body>
+</html>
