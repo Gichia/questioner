@@ -494,6 +494,62 @@ Sidebar
     border-left: 3px solid #18BC9C;
 }
 
+ /* 
+ --------------------
+ Questions Page
+ 
+ */
+ #question-card {
+    width: 85%;
+    padding: 20px 10px;
+    border: 1px solid #2C3E50;
+    margin: 10px;
+}
+
+#question-card-meta {
+    font-size: 22px;
+    color: #3b5998;
+}
+
+#question-card-meta a{
+    color: #18BC9C;
+}
+
+#question-card-meta-below {
+    border-top: 1px solid #18BC9C;
+    color: #18BC9C;
+    padding-top: 10px;
+}
+
+#question-card-meta-below .dislike {
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #18BC9C;
+}
+
+#question-card-comment {
+    border-top: 1px solid #18BC9C;
+}
+
+#question-card-comment textarea {
+    padding: 8px 8px;
+    width: 85%;
+    height: 80px;
+}
+
+#question-comment {
+    padding: 10px 10px;
+    border-top: 1px solid #18BC9C;
+}
+
+#question-comment .comment {
+    width: 85%;
+    padding: 10px 10px;
+    margin-left: 50px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    border-left: 1px solid #3b5998;
+}
 
 /* Media Queries */
 /* Small Sceen */
