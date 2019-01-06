@@ -548,8 +548,59 @@ Sidebar
     margin-left: 50px;
     margin-bottom: 8px;
     font-size: 14px;
-    border-left: 1px solid #3b5998;
+    border-left: 5px solid #3b5998;
 }
+
+
+/* 
+-------------------
+Profile Page
+
+*/
+#profile {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    border-left: 1px solid #999;
+}
+
+#profile .profile-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;   
+}
+
+#profile .profile-img img {
+    max-width: 300px;
+}
+
+#profile .user-info {
+    font-size: 18px;
+    line-height: 1.5;
+    border-left: 1px solid #18BC9C;
+}
+
+#profile .user {
+    margin-top: 18px;
+    border-top: 1px solid #777;
+}
+
+#profile .user-question {
+    padding: 8px 10px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #18BC9C;
+}
+
+#profile .user-question-meta {
+    color: #3b5998;
+}
+
+#profile .user-question-meta a {
+    color: #18BC9C;
+}
+
 
 /* Media Queries */
 /* Small Sceen */
