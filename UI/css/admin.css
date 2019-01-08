@@ -180,6 +180,16 @@ nav ul {
     color: #18BC9C;
 }
 
+.red {
+    background: red;
+    color: white
+}
+
+.red:hover {
+    background: red;
+    color: white
+}
+
 
 /* 
 ------------
