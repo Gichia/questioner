@@ -6,4 +6,4 @@ from .. import ver1
 def hello():
     """ Returns 'hello world' """
 
-    return 'Home'
+    return 'Index'
