@@ -1,3 +1,4 @@
+''' Creates the base of the API'''
 from app import create_app
 
 CONFIG_NAME = 'development'
