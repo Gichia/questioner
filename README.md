@@ -85,7 +85,7 @@ PUT /questions/&lt;questionID&gt;/answers/&lt;answerId&gt; | Mark an answer as a
 
 Authors
 -----------------------------
-**Peter Gichia** - _Initial work_-[Gichia](https:/github.com/Gichia)
+**Peter Gichia** - _Work By_-[Gichia](https:/github.com/Gichia)
 
 License
 --------------------------
