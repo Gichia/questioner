@@ -7,6 +7,7 @@ from app.api.v1.models.meetups_model import MeetupsModel
 APP = create_app('testing')
 
 get_all_meetups_url = 'http://localhost:5000/api/v1/meetups'
+get_specific_meetup_url = 'http://localhost:5000/api/v1/meetups/1'
 
 class TestMeetups(unittest.TestCase):
     """ Class to test all meetup endpoints """
@@ -27,6 +28,13 @@ class TestMeetups(unittest.TestCase):
         self.assertEqual(result["message"], "New meetup created successfully!")
         self.assertEqual(response.status, "200 OK")
         self.assertTrue(response.content_type == "application/json")
+
+    def test_get_specific_meetup(self):
+        test_data = {"location": "Nairobi", "topic": "Intro to JS", "happening_on": "11/2/2019", "tags": ["Beginners", "JS"]}
+        self.app.post(get_all_meetups_url, data=json.dumps(test_data), content_type="application/json")
+        result = self.app.get(get_specific_meetup_url)
+
+        self.assertEqual(result.status_code, 200)
 
 
 if __name__ == '__main__':
