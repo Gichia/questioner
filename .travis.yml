@@ -1,11 +1,16 @@
 language: python
+
 python:
-    - "2.7"
-    - "3.6"
-before_install:
-    - pip install pytest pytest-cov
-    - pip install coveralls
-script:
-    - py.test
-after_success:
-    - coveralls
+
+  - "3.6"
+
+install:
+  - pip3 install -r requirements.txt
+
+script: coverage run --source=app -m pytest && coverage report
+
+after_success: coveralls
+
+notifications:
+  email: false
+  
