@@ -33,6 +33,7 @@ class MeetupsModel():
             return new_meetup
         return {"status": "400", "message": "Please fill in all required fields"}
 
+
     def get_single_meetup(self, meetup_id):
         """Method to get a specific meetup"""
         if len(posted_meetups) == 0:
