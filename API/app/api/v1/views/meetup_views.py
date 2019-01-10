@@ -25,3 +25,12 @@ def get_all_meetups():
     if meetups:
         return jsonify({"status": 200, "data": meetups})
     return jsonify({"status": 404, "message": "No meetups found"})
+
+@ver1.route("/meetups/<int:meetup_id>", methods=["GET"])
+def get_single_meetup(meetup_id):
+    """ Gets specific meetup """
+    meetup = meetups_model.MeetupsModel().get_single_meetup(meetup_id)
+
+    if meetup:
+        return jsonify({"status": 200, "data": meetup})
+    return jsonify({"status": 404, "message": "No meetup found!"})
