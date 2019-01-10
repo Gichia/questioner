@@ -30,11 +30,16 @@ class TestMeetups(unittest.TestCase):
         self.assertTrue(response.content_type == "application/json")
 
     def test_get_specific_meetup(self):
+        """Method to test get specific meetup endpoint"""
         test_data = {"location": "Eldoret", "topic": "Intro to JS", "happening_on": "11/2/2019", "tags": ["Beginners", "JS"]}
         self.app.post(get_all_meetups_url, data=json.dumps(test_data), content_type="application/json")
-        result = self.app.get(get_specific_meetup_url)
+        results = self.app.get(get_specific_meetup_url)
+        result1 = json.loads(results.data.decode("UTF-8"))
 
-        self.assertEqual(result.status_code, 200)
+        self.assertEqual(result1["status"], 200)
+        self.assertEqual(results.status_code, 200)
+        self.assertEqual(results.status, "200 OK")
+        self.assertTrue(results.content_type == "application/json")
 
 
 if __name__ == '__main__':
