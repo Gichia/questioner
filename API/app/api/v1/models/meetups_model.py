@@ -2,11 +2,11 @@
 import datetime
 
 posted_meetups = []
-meetup_id = []
+meetup_id = 0
 
 
 class MeetupsModel():
-    """A cless to include all meetups operations"""
+    """A class to include all meetups operations"""
 
 
     def get_all_meetups(self):
@@ -32,3 +32,11 @@ class MeetupsModel():
             posted_meetups.append(new_meetup)
             return new_meetup
         return {"status": "400", "message": "Please fill in all required fields"}
+
+    def get_single_meetup(self, meetup_id):
+        """Method to get a specific meetup"""
+        if len(posted_meetups) == 0:
+            return False
+        for meetup in posted_meetups:
+            if meetup["meetup_id"] == meetup_id:
+                return meetup
