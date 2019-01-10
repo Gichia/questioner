@@ -4,6 +4,8 @@ This is an application that crowd-sources question suggestions for meet-ups.
 # Badges
 [![Build Status](https://travis-ci.org/Gichia/questioner.svg?branch=master)](https://travis-ci.org/Gichia/questioner)
 [![Coverage Status](https://coveralls.io/repos/github/Gichia/questioner/badge.svg?branch=master)](https://coveralls.io/github/Gichia/questioner?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/67f511c2733e7897b812/maintainability)](https://codeclimate.com/github/Gichia/questioner/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/67f511c2733e7897b812/test_coverage)](https://codeclimate.com/github/Gichia/questioner/test_coverage)
 
 
 # Summary
@@ -83,7 +85,7 @@ PUT /questions/&lt;questionID&gt;/answers/&lt;answerId&gt; | Mark an answer as a
 
 Authors
 -----------------------------
-**Peter Gichia** - _Initial work_-[Gichia](https:/github.com/Gichia)
+**Peter Gichia** - _Work By_-[Gichia](https:/github.com/Gichia)
 
 License
 --------------------------
