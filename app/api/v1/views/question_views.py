@@ -21,3 +21,15 @@ def post_question(meetup_id):
         new_question = questions_model.QuestionsModel().post_question(meetup_id, data["title"], data["body"])
         return jsonify({"status": 201, "message": "Successfully posted your question!", "data": new_question})
     return jsonify({"status": 404, "message": "That meetup does not exist!"})
+
+@ver1.route("/questions/<int:meetup_id>", methods=["GET"])
+def get_meetup_questions(meetup_id):
+    """ Get questions for specific meetup """
+    # Get the requested meetup
+    meetup = meetups_model.MeetupsModel().get_single_meetup(meetup_id)
+
+    if meetup:
+        questions = questions_model.QuestionsModel().get_meetup_questions(meetup_id)
+        if questions:
+            return jsonify({"status": 200, "data": questions})
+    return jsonify({"status": 404, "message": "That meetup does not exist!"})
