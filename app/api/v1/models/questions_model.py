@@ -34,3 +34,21 @@ class QuestionsModel():
                 questions.append(question)
                 return questions
             return False
+
+    def get_single_question(self, question_id):
+        """Method to get a single question"""
+        if len(posted_questions) == 0:
+            return False
+        for question in posted_questions:
+            if question["question_id"] == question_id:
+                return question
+            return False
+
+    def upvote_question(self, question_id):
+        """Method to upvote a question"""
+        if len(posted_questions) == 0:
+            return False
+        for question in posted_questions:
+            if question["question_id"] == question_id:
+                question["votes"] += 1
+            return False 
