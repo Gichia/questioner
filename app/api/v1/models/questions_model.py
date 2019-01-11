@@ -15,10 +15,22 @@ class QuestionsModel():
             meetup = meetup_id,
             posted_on=datetime.datetime.now(),
             title=title,
-            body=body
+            body=body,
+            votes=0
         )
 
         if new_question:
             posted_questions.append(new_question)
             return new_question
         return False
+
+    def get_meetup_questions(self, meetup_id):
+        """Method to get all questions for a specific meetup"""
+        if len(posted_questions) == 0:
+            return False
+        for question in posted_questions:
+            questions = []
+            if question["meetup"] == meetup_id:
+                questions.append(question)
+                return questions
+            return False
