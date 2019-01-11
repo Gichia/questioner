@@ -42,5 +42,5 @@ def upvote_question(question_id):
 
     if question:
         questions_model.QuestionsModel().upvote_question(question_id)
-        return jsonify({"status": 404, "message": "Question successfully liked!"})
+        return jsonify({"status": 200, "message": "Question successfully liked!"})
     return jsonify({"status": 404, "message": "That question does not exist!"})
