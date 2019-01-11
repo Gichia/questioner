@@ -1,15 +1,20 @@
 language: python
 
 python:
-
   - "3.6"
 
+services:
+  - postgresql
+
 install:
-  - pip3 install -r requirements.txt
-
-script: coverage run --source=app -m pytest && coverage report
-
-after_success: coveralls
+  - pip install -r requirements.txt
+  - pip install coveralls
+  
+script:
+  - pytest --with-coverage --cover-package=app  && coverage report
+  
+after_success:
+  - coveralls
 
 notifications:
   email: false
