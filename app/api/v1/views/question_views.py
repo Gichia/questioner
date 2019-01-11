@@ -33,3 +33,14 @@ def get_meetup_questions(meetup_id):
         if questions:
             return jsonify({"status": 200, "data": questions})
     return jsonify({"status": 404, "message": "That meetup does not exist!"})
+
+@ver1.route("/questions/upvote/<int:question_id>", methods=["PATCH"])
+def upvote_question(question_id):
+    """ Upvote a question """
+    # Get the requested question
+    question = questions_model.QuestionsModel().get_single_question(question_id)
+
+    if question:
+        questions_model.QuestionsModel().upvote_question(question_id)
+        return jsonify({"status": 404, "message": "Question successfully liked!"})
+    return jsonify({"status": 404, "message": "That question does not exist!"})
