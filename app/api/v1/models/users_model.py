@@ -1,5 +1,8 @@
 """Contains all user DB operations"""
 import datetime
+import jwt
+from werkzeug.security import check_password_hash
+from instance.config import Config
 
 users = []
 user_id = 0
@@ -35,3 +38,25 @@ class UserModel():
         for user in users:
             if user["username"] == username:
                 return user
+
+    def login_user(self, username, password):
+        """Functtion to login in user"""
+        for user in users:
+            if user["username"] == username:
+                user_password = user["password"]
+                if check_password_hash(user_password, password):
+                    token = jwt.encode({'sub': username, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, Config.SECRET_KEY)
+                    return token
+            return False
+
+    def authenticate_token(self, token):
+        """Authenticate user token"""
+        if not token:
+            return False
+        try:
+            data = jwt.decode(token, Config.SECRET_KEY)
+            current_user = UserModel().get_single_user(data["sub"])
+        except:
+            return False
+        return current_user
+        
