@@ -34,3 +34,20 @@ def get_single_meetup(meetup_id):
     if meetup:
         return jsonify({"status": 200, "data": meetup})
     return jsonify({"status": 404, "message": "No meetup found!"})
+
+
+@ver1.route("/meetups/rsvp/<int:meetup_id>", methods=["POST"])
+def meetup_rsvp(meetup_id):
+    """ Respond to meetup rsvp """
+    data = request.get_json()
+    if not data:
+        return jsonify({"status": 500, "message": "Please provide your response"})
+    status = data["status"].lower()
+    if (status != "yes" and status != "no" and status != "maybe"):
+        return jsonify({"message": "Status can only be a yes, no or maybe"})
+    meetup = meetups_model.MeetupsModel().get_single_meetup(meetup_id)
+    if not meetup:
+        jsonify({"status": 404, "message": "No meetup found"})
+    meetup = meetups_model.MeetupsModel().meetup_rsvp(meetup_id, status)
+    return jsonify({"status_code": 201, "status": status, "message": "Rsvp responded to!"})
+ 
