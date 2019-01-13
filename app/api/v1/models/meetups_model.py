@@ -2,6 +2,7 @@
 import datetime
 
 posted_meetups = []
+rsvps = []
 meetup_id = 0
 
 
@@ -41,3 +42,18 @@ class MeetupsModel():
         for meetup in posted_meetups:
             if meetup["meetup_id"] == meetup_id:
                 return meetup
+
+    def meetup_rsvp(self, meetup_id, status):
+        """Method to respond to meetup rsvp"""
+        if len(posted_meetups) == 0:
+            return False
+        meetup = self.get_single_meetup(meetup_id)
+        if meetup:
+            new_rsvp = dict(
+                meetup=meetup_id,
+                status=status
+            )
+            rsvps.append(new_rsvp)
+            return meetup_id
+        return False
+        
