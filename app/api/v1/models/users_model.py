@@ -58,5 +58,19 @@ class UserModel():
             current_user = UserModel().get_single_user(data["sub"])
         except:
             return False
-        return current_user
+        return current_user["user_id"]
+
+    def username_exist(self, username):
+        """Check if username exists"""
+        for user in users:
+            if user["username"] == username:
+                return True
+            return False
+
+    def email_exist(self, email):
+        """Check if email exists"""
+        for user in users:
+            if user["email"] == email:
+                return True
+            return False
         
