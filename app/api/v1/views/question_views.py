@@ -38,9 +38,18 @@ def get_meetup_questions(meetup_id):
 def upvote_question(question_id):
     """ Upvote a question """
     # Get the requested question
-    question = questions_model.QuestionsModel().get_single_question(question_id)
+    question = questions_model.QuestionsModel().upvote_question(question_id)
 
     if question:
-        questions_model.QuestionsModel().upvote_question(question_id)
-        return jsonify({"status": 200, "message": "Question successfully liked!"})
-    return jsonify({"status": 404, "message": "That question does not exist!"})
+        return jsonify({"status": 200, "message": "Question upvoted!", "data": question}, 200)
+    return jsonify({"status": 404, "message": "Question not found!"}, 404)
+
+@ver1.route("/questions/downvote/<int:question_id>", methods=["PATCH"])
+def downvote_question(question_id):
+    """ Upvote a question """
+    # Get the requested question
+    question = questions_model.QuestionsModel().downvote_question(question_id)
+
+    if question:
+        return jsonify({"status": 200, "message": "Question downvoted!", "data": question}, 200)
+    return jsonify({"status": 404, "message": "Question not found!"}, 404)
