@@ -27,10 +27,10 @@ class TestMeetups(unittest.TestCase):
         self.app.post(post_question_url, data=json.dumps(test_data2), content_type="application/json")
 
         response = self.app.patch(upvote_question_url, content_type="application/json")
-        result = result = json.loads(response.data.decode("UTF-8"))
+        result = json.loads(response.data.decode("UTF-8"))
 
         self.assertEqual(result["status"], 200)
-        self.assertEqual(result["message"], "Question successfully liked!")
+        self.assertEqual(result["message"], "Question upvoted!")
         self.assertEqual(response.status, "200 OK")
         self.assertEqual(response.content_type, "application/json")
 
