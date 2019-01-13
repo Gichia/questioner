@@ -3,6 +3,7 @@ import datetime
 
 posted_questions = []
 question_id = 0
+votes = 0
 
 
 class QuestionsModel():
@@ -16,7 +17,7 @@ class QuestionsModel():
             posted_on=datetime.datetime.now(),
             title=title,
             body=body,
-            votes=0
+            votes=votes
         )
 
         if new_question:
@@ -48,7 +49,18 @@ class QuestionsModel():
         """Method to upvote a question"""
         if len(posted_questions) == 0:
             return False
-        for question in posted_questions:
-            if question["question_id"] == question_id:
-                question["votes"] += 1
-            return False 
+        question = self.get_single_question(question_id)
+        if question:
+            question["votes"] += 1
+            return question
+        return False
+
+    def downvote_question(self, question_id):
+        """Method to upvote a question"""
+        if len(posted_questions) == 0:
+            return False
+        question = self.get_single_question(question_id)
+        if question:
+            question["votes"] -= 1
+            return question
+        return False
