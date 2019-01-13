@@ -27,6 +27,7 @@ Pre-requisites
 1. Python3
 2. Flask
 3. Postman
+4. Git
 
 Installation
 ---------------------------------
@@ -40,12 +41,7 @@ Installation
     source venv/scripts/activate
 ```
 
-3. Install git
-```
-    sudo apt-get install get-all
-```
-
-4. Switch to 'develop' branch
+3. Switch to 'develop' branch on git
 ```
     git checkout develop
 ```
@@ -58,7 +54,7 @@ Installation
 Run the application
 ---------------------------------
 ```
-    python3 run.py
+    python run.py
 ```
 
 When you run this application, you can test the following api endpoints using postman
@@ -77,15 +73,15 @@ POST /auth/login | Login a user
 Endpoint | Functionality
 ---------|---------------
 GET /questions | Fetch all questions
-GET /questions/&lt;questionID&gt; | Fetch a specific question
+GET /questions/&lt;question_id&gt; | Fetch a specific question
 POST /questions | Post a question
-DELETE /questions/&lt;questionID&gt; | Delete a question
-POST /questions/&lt;questionID&gt;/answers | Post an answer to a question
-PUT /questions/&lt;questionID&gt;/answers/&lt;answerId&gt; | Mark an answer as accepted, or edit an answer
+DELETE /questions/&lt;question_id&gt; | Delete a question
+POST /questions/&lt;answer/question_id&gt; | Post an answer to a question
+
 
 Authors
 -----------------------------
-**Peter Gichia** - _Work By_-[Gichia](https:/github.com/Gichia)
+**Peter Gichia** -_Work By_-[Gichia](https:/github.com/Gichia)
 
 License
 --------------------------
