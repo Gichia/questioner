@@ -36,7 +36,7 @@ class TestMeetups(BaseTest):
 
 
     def test_upvote_question(self):
-        """Method to test upvote question endpoint"""
+        """Method to test upvote questions endpoint"""
         self.post_meetup()
         self.post_question()
 
