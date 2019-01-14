@@ -3,13 +3,6 @@ import unittest
 import json
 from app import create_app
 
-meetup_url = 'http://localhost:5000/api/v1/meetups'
-upcoming = 'http://localhost:5000/api/v1/meetups/upcoming'
-rsvp_url = 'http://localhost:5000/api/v1/meetups/rsvp/1'
-post_question = 'http://localhost:5000/api/v1/questions/1'
-specific_meetup = 'http://localhost:5000/api/v1/meetups/1'
-meetup_questions = 'http://localhost:5000/api/v1/questions/1'
-
 
 class BaseTest(unittest.TestCase):
     """Initializes our setUp for tests"""
@@ -18,6 +11,15 @@ class BaseTest(unittest.TestCase):
         """Initializes our app and tests"""
         self.app = create_app("testing")
         self.client = self.app.test_client()
+        self.meetup_url = 'http://localhost:5000/api/v1/meetups'
+        self.upcoming = 'http://localhost:5000/api/v1/meetups/upcoming'
+        self.rsvp_url = 'http://localhost:5000/api/v1/meetups/rsvp/1'
+        self.post_question = 'http://localhost:5000/api/v1/questions/1'
+        self.specific_meetup = 'http://localhost:5000/api/v1/meetups/1'
+        self.meetup_questions = 'http://localhost:5000/api/v1/questions/1'
+        self.wrong_url = "http://localhost:5000/api/v1/questions"
+        self.upvote_question_url = 'http://localhost:5000/api/v1/questions/upvote/1'
+        self.downvote_question_url = 'http://localhost:5000/api/v1/questions/downvote/1'
         self.meetup = {
             "location": "Nairobi", 
             "topic": "Intro to JS", 
@@ -32,34 +34,14 @@ class BaseTest(unittest.TestCase):
             "status": "maybe"
         }
 
+    def post(self, url, db):
+        return self.client.post(url, data=json.dumps(db), content_type="application/json")
 
-    def post_meetup(self):
-        """Create a valid post for test purposes"""
-        return self.client.post(meetup_url, data=json.dumps(self.meetup), content_type="application/json")
+    def get_items(self, url):
+        return self.client.get(url)
 
-    def get_meetups(self):
-        """Get all meetup"""
-        return self.client.get(meetup_url)
-
-    def get_upcoming(self):
-        """Get upcoming meetups"""
-        return self.client.get(upcoming)
-
-    def post_rsvp(self):
-        """Post rsvp for testing"""
-        return self.client.post(rsvp_url, data=json.dumps(self.rsvp), content_type="application/json")
-    
-    def get_single_meetup(self):
-        """Get specific meetup"""
-        return self.client.get(specific_meetup)
-
-    def post_question(self):
-        """Post a question for test purposes"""
-        return self.client.post(post_question, data=json.dumps(self.question), content_type="application/json")
-
-    def meetup_questions(self):
-        """Get specific meetup questions for test purposes"""
-        return self.client.get(meetup_questions)
+    def patch(self, url):
+        return self.client.patch(url, content_type="application/json")
 
     def return_json(self, response):
         """Return json formated response for test purpose"""
