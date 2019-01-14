@@ -23,6 +23,18 @@ class TestMeetups(BaseTest):
         self.assertEqual(response2.status_code, 404)
         self.assertEqual(response.content_type, "application/json")
 
+    def test_meetup_questions(self):
+        """Test get specific meetup questions"""
+        self.post_meetup()
+        self.post_question()
+        response = self.meetup_questions()
+        result = self.return_json(response)
+
+        self.assertEqual(result["status"], 200)
+        self.assertEqual(response.status, "200 OK")
+        self.assertEqual(response.content_type, "application/json")
+
+
     def test_upvote_question(self):
         """Method to test upvote question endpoint"""
         self.post_meetup()
