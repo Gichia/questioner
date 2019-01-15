@@ -13,7 +13,7 @@ class MeetupsModel(BaseModel):
         self.meetups = posted_meetups
         self.rsvps = posted_rsvps
 
-    def create_meetup(self, location, tags, topic, happening_on):
+    def create_meetup(self, location, tags, topic, happening_on, *args):
         """Method to create a new meetup"""
         new_meetup = dict(
             meetup_id=len(posted_meetups) + 1,
@@ -40,11 +40,8 @@ class MeetupsModel(BaseModel):
             if meetup["meetup_id"] == meetup_id:
                 return meetup
 
-
     def get_meetup(self, question_id):
         """Method match if meetup exists"""
-        if len(self.meetups) == 0:
-            return False
         meetup = self.get_single_meetup(meetup_id)
         if meetup:
             return meetup

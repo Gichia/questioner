@@ -25,8 +25,6 @@ class QuestionsModel(BaseModel):
 
     def get_question(self, question_id):
         """Method match if question exists"""
-        if len(self.questions) == 0:
-            return False
         question = self.get_single_question(question_id)
         if question:
             return question

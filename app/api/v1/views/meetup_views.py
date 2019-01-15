@@ -1,5 +1,5 @@
 """ Create meetuo views' """
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 from .. import ver1
 from ... v1.models import meetups_model
 
@@ -7,14 +7,19 @@ from ... v1.models import meetups_model
 @ver1.route("/meetups", methods=["POST"])
 def create_meetup():
     """ Post meetups """
-    data = request.get_json()
+    try:
+        data = request.get_json()
+        topic = data["topic"]
+        location = data["location"]
+        tags = data["tags"]
+        happeningOn = data["happening_on"]
+    except:
+        return make_response(jsonify({
+            "status": 500,
+            "message": "Please provide correct details"
+        }))
 
-    if not data:
-        return jsonify({
-            'message': "Please fill in all fields!",
-            'status': 401
-            })
-    new_meetup = meetups_model.MeetupsModel().create_meetup(data['location'], data['tags'], data['topic'], data['happening_on'])
+    new_meetup = meetups_model.MeetupsModel().create_meetup(location, tags, topic, happeningOn)
     return jsonify({"status": 201, "message": "New meetup created successfully!", "data": new_meetup})
 
 @ver1.route("/meetups", methods=["GET"])
@@ -49,10 +54,15 @@ def get_upcoming():
 @ver1.route("/meetups/rsvp/<int:meetup_id>", methods=["POST"])
 def meetup_rsvp(meetup_id):
     """ Respond to meetup rsvp """
-    data = request.get_json()
-    if not data:
-        return jsonify({"status": 500, "message": "Please provide your response"})
-    status = data["status"].lower()
+    try:
+        data = request.get_json()
+        status = data["status"].lower()
+    except:
+        return make_response(jsonify({
+            "status": 500,
+            "message": "Please provide correct details"
+        }))
+
     if (status != "yes" and status != "no" and status != "maybe"):
         return jsonify({"message": "Status can only be a yes, no or maybe"})
     meetup = meetups_model.MeetupsModel().get_single_meetup(meetup_id)
