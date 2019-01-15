@@ -40,11 +40,8 @@ class MeetupsModel(BaseModel):
             if meetup["meetup_id"] == meetup_id:
                 return meetup
 
-
     def get_meetup(self, question_id):
         """Method match if meetup exists"""
-        if len(self.meetups) == 0:
-            return False
         meetup = self.get_single_meetup(meetup_id)
         if meetup:
             return meetup
