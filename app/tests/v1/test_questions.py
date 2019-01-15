@@ -1,11 +1,9 @@
 """File to test all questions endpoints"""
-import json
 from app.tests.v1.basetests import BaseTest
 
 
 class TestMeetups(BaseTest):
     """ Class to test all questions endpoints """
-
 
     def test_post_question(self):
         """Test post question endpoint"""
