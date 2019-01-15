@@ -2,7 +2,6 @@
 from app.tests.v1.basetests import BaseTest
 
 
-
 class TestMeetups(BaseTest):
     """ Class to test all meetup endpoints """
 
