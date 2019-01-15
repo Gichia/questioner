@@ -13,7 +13,7 @@ class MeetupsModel(BaseModel):
         self.meetups = posted_meetups
         self.rsvps = posted_rsvps
 
-    def create_meetup(self, location, tags, topic, happening_on):
+    def create_meetup(self, location, tags, topic, happening_on, *args):
         """Method to create a new meetup"""
         new_meetup = dict(
             meetup_id=len(posted_meetups) + 1,
