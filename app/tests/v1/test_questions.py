@@ -1,20 +1,15 @@
 """File to test all questions endpoints"""
-import json
 from app.tests.v1.basetests import BaseTest
 
-wrong_url = "http://localhost:5000/api/v1/questions"
-upvote_question_url = 'http://localhost:5000/api/v1/questions/upvote/1'
-downvote_question_url = 'http://localhost:5000/api/v1/questions/downvote/1'
 
 class TestMeetups(BaseTest):
     """ Class to test all questions endpoints """
 
-
     def test_post_question(self):
         """Test post question endpoint"""
-        self.post_meetup()
-        response = self.post_question()
-        response2 = self.client.post(wrong_url, data=json.dumps(self.question), content_type="application/json")
+        self.post(self.meetup_url, self.meetup)
+        response = self.post(self.post_question, self.question)
+        response2 = self.post(self.wrong_url, self.question)
         result = self.return_json(response)
 
         self.assertEqual(result["status"], 201)
@@ -25,9 +20,9 @@ class TestMeetups(BaseTest):
 
     def test_meetup_questions(self):
         """Test get specific meetup questions"""
-        self.post_meetup()
-        self.post_question()
-        response = self.meetup_questions()
+        self.post(self.meetup_url, self.meetup)
+        self.post(self.post_question, self.question)
+        response = self.get_items(self.meetup_questions)
         result = self.return_json(response)
 
         self.assertEqual(result["status"], 200)
@@ -37,10 +32,10 @@ class TestMeetups(BaseTest):
 
     def test_upvote_question(self):
         """Method to test upvote questions endpoint"""
-        self.post_meetup()
-        self.post_question()
+        self.post(self.meetup_url, self.meetup)
+        self.post(self.post_question, self.question)
 
-        response = self.client.patch(upvote_question_url, content_type="application/json")
+        response = self.patch(self.upvote_question_url)
         result = self.return_json(response)
 
         self.assertEqual(result["status"], 200)
@@ -50,10 +45,10 @@ class TestMeetups(BaseTest):
 
     def test_downvote_question(self):
         """Method to test upvote question endpoint"""
-        self.post_meetup()
-        self.post_question()
+        self.post(self.meetup_url, self.meetup)
+        self.post(self.post_question, self.question)
 
-        response = self.client.patch(downvote_question_url, content_type="application/json")
+        response = self.client.patch(self.downvote_question_url)
         result = self.return_json(response)
 
         self.assertEqual(result["status"], 200)

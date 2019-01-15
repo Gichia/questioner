@@ -2,15 +2,12 @@
 from app.tests.v1.basetests import BaseTest
 
 
-specific_meetups = 'http://localhost:5000/api/v1/meetups/1'
-
-
 class TestMeetups(BaseTest):
     """ Class to test all meetup endpoints """
 
     def test_post_meetup(self):
         """Method to test get all meetups endpoint"""
-        response = self.post_meetup()
+        response = self.post(self.meetup_url, self.meetup)
         result = self.return_json(response)
 
         self.assertEqual(result["status"], 201)
@@ -20,8 +17,8 @@ class TestMeetups(BaseTest):
 
     def test_get_all_meetups(self):
         """A test for the get all meetups endpoint"""
-        self.post_meetup()
-        response = self.get_meetups()
+        self.post(self.meetup_url, self.meetup)
+        response = self.get_items(self.meetup_url)
         result = self.return_json(response)
 
         self.assertEqual(result["status"], 200)
@@ -30,8 +27,8 @@ class TestMeetups(BaseTest):
 
     def test_get_specific_meetup(self):
         """Method to test get specific meetup endpoint"""
-        self.post_meetup()
-        results = self.get_single_meetup()
+        self.post(self.meetup_url, self.meetup)
+        results = self.get_items(self.meetup_url)
         result1 = self.return_json(results)
 
         self.assertEqual(result1["status"], 200)
@@ -41,8 +38,8 @@ class TestMeetups(BaseTest):
     
     def test_get_upcoming(self):
         """Test for get upcoming meetups endpoint"""
-        self.post_meetup()
-        response = self.get_upcoming()
+        self.post(self.meetup_url, self.meetup)
+        response = self.get_items(self.upcoming)
         result = self.return_json(response)
 
         self.assertEqual(result["status"], 200)
@@ -51,8 +48,8 @@ class TestMeetups(BaseTest):
 
     def test_rsvp(self):
         """Test respond to meetup rsvp"""
-        self.post_meetup()
-        response = self.post_rsvp()
+        self.post(self.meetup_url, self.meetup)
+        response = self.post(self.rsvp_url, self.rsvp)
         result = self.return_json(response)
 
         self.assertIn("Rsvp responded to!", result["message"])
