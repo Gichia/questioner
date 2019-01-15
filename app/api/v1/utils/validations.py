@@ -18,15 +18,20 @@ class Validations:
             return False
         return True
 
-    def is_only_string(self, phrase):
-        """Validate only string"""
-        for item in phrase:
-            if type(item) != str:
-                return False
-        return True
+    def is_string(self, phrase):
+        """Validate if variable is string only"""
+        if isinstance(phrase, str):
+            return True
+        return False
+
+    def is_numeric(self, phrase):
+        """Validate if variable is int only"""
+        if isinstance(phrase, int):
+            return True
+        return False
             
     def is_future_date(self, date):
-        """VAlidate future date"""
+        """Check if date is a future date"""
         if date > datetime.date.today():
             return True
         else:
