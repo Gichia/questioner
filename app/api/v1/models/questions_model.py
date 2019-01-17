@@ -50,12 +50,11 @@ class QuestionsModel(BaseModel):
         """Method to get all questions for a specific meetup"""
         if len(self.questions) == 0:
             return False
+        questions = []
         for question in self.questions:
-            questions = []
             if question["meetup"] == meetup_id:
                 questions.append(question)
-                return questions
-            return False
+        return questions
 
     def upvote_question(self, question_id):
         """Method to upvote a question"""
