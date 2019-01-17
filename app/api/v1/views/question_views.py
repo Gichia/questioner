@@ -1,5 +1,5 @@
 """ Create questions views' """
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 from .. import ver1
 from ... v1.models import questions_model
 from ... v1.models import meetups_model
@@ -8,17 +8,26 @@ from ... v1.models import meetups_model
 @ver1.route("/questions/<int:meetup_id>", methods=["POST"])
 def post_question(meetup_id):
     """ Post question to specific meetup """
+    try:
+        data = request.get_json()
+        title = data["title"]
+        body = data["body"]
+    except:
+        return make_response(jsonify({
+            "status": 500,
+            "message": "Make sure sure fields are accurate!"
+        }))
+    
+    if not title.strip():
+        return jsonify({"message": "Please add a title!"})
+    elif not body.strip():
+        return jsonify({"message": "Please add a body!"})
+
     # Get the requested meetup
     meetup = meetups_model.MeetupsModel().get_single_meetup(meetup_id)
 
     if meetup:
-        data = request.get_json()
-        if not data:
-            return jsonify({
-            'message': "Please fill in all fields!",
-            'status': 401
-            })
-        new_question = questions_model.QuestionsModel().post_question(meetup_id, data["title"], data["body"])
+        new_question = questions_model.QuestionsModel().post_question(meetup_id, title, body)
         return jsonify({"status": 201, "message": "Successfully posted your question!", "data": new_question})
     return jsonify({"status": 404, "message": "That meetup does not exist!"})
 
