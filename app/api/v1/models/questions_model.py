@@ -61,13 +61,11 @@ class QuestionsModel(BaseModel):
         question = self.get_question(question_id)
         if question:
             question["votes"] += 1
-            return question
-        return False
+        return question
 
     def downvote_question(self, question_id):
         """Method to upvote a question"""
         question = self.get_question(question_id)
         if question:
             question["votes"] -= 1
-            return question
-        return False
+        return question
