@@ -3,7 +3,6 @@ from flask import Flask, request, jsonify, make_response
 from .. import ver1
 from ... v1.models import meetups_model
 
-
 @ver1.route("/meetups", methods=["POST"])
 def create_meetup():
     """ Post meetups """
@@ -18,6 +17,13 @@ def create_meetup():
             "status": 500,
             "message": "Please provide correct details"
         }))
+
+    if not topic.strip():
+        return jsonify({"message": "Please add a topic!"})
+    elif not location.strip():
+        return jsonify({"message": "Please add a location!"})
+    elif not happeningOn.strip():
+        return jsonify({"message": "Please add a date for the meetup!"})
 
     new_meetup = meetups_model.MeetupsModel().create_meetup(location, tags, topic, happeningOn)
     return jsonify({"status": 201, "message": "New meetup created successfully!", "data": new_meetup})
@@ -70,4 +76,3 @@ def meetup_rsvp(meetup_id):
         jsonify({"status": 404, "message": "No meetup found"})
     meetup = meetups_model.MeetupsModel().meetup_rsvp(meetup_id, status)
     return jsonify({"status_code": 201, "status": status, "message": "Rsvp responded to!"})
- 
