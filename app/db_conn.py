@@ -33,7 +33,6 @@ def db_tables():
     tbl1 = """CREATE TABLE IF NOT EXISTS meetups (
         meetup_id serial PRIMARY KEY NOT NULL,
         created_by INT NOT NULL,
-        created_on DATE NOT NULL DEFAULT timeofday(),
         location CHAR(50) NOT NULL,
         topic CHAR(50) NULL,
         images CHAR(50) NULL
@@ -43,7 +42,6 @@ def db_tables():
         question_id serial PRIMARY KEY NOT NULL,
         meetup_id INT NOT NULL,
         user_id INT NOT NULL,
-        created_on DATE NOT NULL DEFAULT timeofday(),
         title CHAR(100) NOT NULL,
         body CHAR(150) NOT NULL
         )"""
@@ -52,7 +50,6 @@ def db_tables():
         comment_id serial PRIMARY KEY NOT NULL,
         question_id INT NOT NULL,
         user_id INT NOT NULL,
-        created_on DATE NOT NULL DEFAULT timeofday(),
         comment CHAR(150) NOT NULL
         )"""
 
@@ -60,7 +57,6 @@ def db_tables():
         rsvp_id serial PRIMARY KEY NOT NULL,
         meetup_id INT NOT NULL,
         user_id INT NOT NULL,
-        created_on DATE NOT NULL DEFAULT timeofday(),
         status CHAR(10) NOT NULL
         )"""
 
@@ -69,9 +65,9 @@ def db_tables():
         firstname CHAR(40) NOT NULL,
         lastname CHAR(45) NOT NULL,
         email CHAR(45) NOT NULL,
-        joined_on DATE NOT NULL DEFAULT timeofday(),
+        created_on CHAR(50) NOT NULL,
         is_admin BOOLEAN NOT NULL DEFAULT FALSE,
-        password CHAR(50) NOT NULL,
+        password CHAR(150) NOT NULL,
         username CHAR(20) NULL
         )"""
 
