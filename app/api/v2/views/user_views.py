@@ -1,9 +1,11 @@
 """User endpoints"""
 from flask import request, jsonify, make_response
 from app.api.v2.models.users_model import UserClass
+from app.api.v2.utils.validations import Validations
 from app.api.v2 import ver2
 
 db = UserClass()
+validate = Validations()
 
 @ver2.route("/auth/signup", methods=["POST"])
 def user_signup():
@@ -18,9 +20,29 @@ def user_signup():
         return make_response(jsonify({
             "status": 500,
             "message": "Please provide correct details"
-        }))
+        }), 500)
 
-    # Validations
     phone = data["phone"]
-    db.save_user(firstname, lastname, email, password, phone)
-    return 'True'
+
+    if not firstname.strip():
+        return make_response(jsonify({"message": "Please enter first name!"}))
+    elif validate.valid_length(firstname) is False:
+        return make_response(jsonify({"message": "FirstName cannot be less than 4 or more than 30 characters"}))
+    elif not lastname.strip():
+        return make_response(jsonify({"message": "Please enter last name!"}))
+    elif validate.valid_length(lastname) is False:
+        return make_response(jsonify({"message": "LastName cannot be less than 4 or more than 30 characters"}))
+    elif not email.strip():
+        return make_response(jsonify({"message": "Please enter last name!"}))
+    elif validate.is_valid_email(email) is False:
+        return make_response(jsonify({"message": "Please provide a valid email"}))
+    elif not password.strip():
+        return make_response(jsonify({"message": "Please enter a password!"}))
+    elif validate.is_valid_password(password) is False:
+        return make_response(jsonify({"message": "Please provide a valid password!"}))
+
+    if db.get_email(email):
+        return make_response(jsonify({"message": "That email exists!"}))
+    
+    db.save_user(firstname, lastname, email, password)
+    return make_response(jsonify({"message": "Successfully registered, you can Login!", "status": 201}), 201)
