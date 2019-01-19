@@ -8,7 +8,7 @@ db_url = os.getenv('DATABASE_URL')
 
 
 def init_connection(url):
-    """Function to connect to psycopg"""
+    """Function to connect to db through psycopg"""
     conn = pg2.connect(url)
     return conn
 
