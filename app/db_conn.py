@@ -7,28 +7,28 @@ url = "dbname='questioner' host='localhost' port='5432' user='postgres' password
 db_url = os.getenv('DATABASE_URL')
 
 
-def connection(url):
+def init_connection(url):
     """Function to connect to psycopg"""
     conn = pg2.connect(url)
     return conn
 
-def connect():
+def get_connection():
     """Function to initialize the database"""
-    db = connection(url)
+    db = init_connection(url)
     return db
 
 def create_tables():
     """Function to create tables if the do not exist"""
-    conn = connection(url)
+    conn = init_connection(url)
     curr = conn.cursor()
-    queries = tables()
+    tables = db_tables()
 
-    for query in queries:
+    for query in tables:
         curr.execute(query)
     conn.commit()
 
 
-def tables():
+def db_tables():
     """Queries to create app tables"""
     tbl1 = """CREATE TABLE IF NOT EXISTS meetups (
         meetup_id serial PRIMARY KEY NOT NULL,
@@ -75,5 +75,5 @@ def tables():
         username CHAR(20) NULL
         )"""
 
-    queries = [tbl1, tbl2, tbl3, tbl4, tbl5]
-    return queries
+    tables = [tbl1, tbl2, tbl3, tbl4, tbl5]
+    return tables
