@@ -1,24 +1,24 @@
 """User class to store all db methods"""
-from app.db_conn import get_connection
+import datetime
+from werkzeug.security import generate_password_hash
+from .basemodel import BaseModel
 
 
-class UserClass():
-    """User class to init user db"""
-    def __init__(self):
-        self.db = get_connection()
-
-    def save_user(self, firstname, lastname, email, password, phone):
+class UserClass(BaseModel):
+    """Contains relevant db methods"""
+        
+    def save_user(self, firstname, lastname, email, password):
         """Method to add new user to db"""    
         user = {
             "firstname": firstname,
             "lastname": lastname,
             "email": email,
-            "password": password,
-            "phonenumber": phone
+            "created_on": datetime.datetime.now(),
+            "password": generate_password_hash(password)
         }
 
-        query = """INSERT INTO users (firstname, lastname, email, password, phonenumber) VALUES
-                    ( %(firstname)s, %(lastname)s, %(email)s, %(password)s, %(phonenumber)s )"""
-        curr = self.db.cursor()
-        curr.execute(query, user)
-        self.db.commit()
+        query = """INSERT INTO users (firstname, lastname, email, created_on, password) VALUES
+                    ( %(firstname)s, %(lastname)s, %(email)s, %(created_on)s, %(password)s )"""
+        
+        data = self.post_data(query, user)
+        return data
