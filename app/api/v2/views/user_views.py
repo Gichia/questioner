@@ -46,3 +46,17 @@ def user_signup():
     
     db.save_user(firstname, lastname, email, password)
     return make_response(jsonify({"message": "Successfully registered, you can Login!", "status": 201}), 201)
+
+@ver2.route("/auth/login")
+def user_login():
+    """Login user endpoint"""
+    auth = request.authorization
+
+    if not auth or not auth.username or not auth.password:
+        return make_response('Please provide login info!', 401, {'WWW-Authenticate': 'Basic realm="Login Required"'})
+
+    token = db.login_user(auth.username, auth.password)
+
+    if not token:
+        return make_response(jsonify({"message": "Incorrect login details!"}), 401)
+    return make_response(jsonify({"message": "Successfully logged in!", "status": 200,"token": token}), 200)
