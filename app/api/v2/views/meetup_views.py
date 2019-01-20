@@ -1,10 +1,12 @@
 """Meetup Endpoints"""
 from flask import request, jsonify, make_response
 from app.api.v2.models.users_model import login_required
+from app.api.v2.models.meetups_model import MeetupsClass
 from app.api.v2.utils.validations import Validations
 from app.api.v2 import ver2
 
 validate = Validations()
+db = MeetupsClass()
 
 @ver2.route("/meetups", methods=["POST"])
 @login_required
@@ -37,3 +39,6 @@ def post_meetup(current_user):
         createdOn=current_user[4].strip(),
         isAdmin=current_user[5]
     )
+
+    db.post_meetup(user["user_id"], location, topic, happeningOn)
+    return make_response(jsonify({"message": "Meetup successfully created!", "status": 201}), 201)
